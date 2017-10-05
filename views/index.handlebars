@@ -1,0 +1,89 @@
+<div class="row" style="text-align: center; margin-top: 0px;">
+	<img src="https://i.vimeocdn.com/portrait/2052808_300x300" alt="alantic_pkg">
+	<div class="page-header">
+	</div>
+</div>
+
+<div class="row" style="margin-left: 20px">
+
+<h3>Atlantic Packaging Load Board</h3>
+
+<p><b>Please enter the form below to generate a new truckload.</b>
+	<br>
+		<ul>
+			<li>Current loads will show in the "Current load box"</li>
+			<li>Once a load is off the board it has been delivered.</li>
+			<li>ID is how you search for the load</li>
+			<li>Status can be updated with the appropriate form below.</li>
+		</ul>
+</p>
+
+<div class="col-lg-6">
+	<div class="panel panel-default" style="padding-left: 10px; background-color:blanchedalmond;">
+	<h3>Current Truckloads</h3>
+	<div class="loadBox">
+		<ul>
+			{{#each truckloads}} 
+				<li>
+					<div class="load" style="margin-bottom: 10px;">
+					<p>ID: {{this.id}}</p>
+					<p>Lane: {{this.lane}}</p>
+					<p>PickUp Date: {{this.pickupdate}}</p>
+					<p>PickUp Number: {{this.pickupnumber}}</p>
+					<p>PO Number: {{this.ponumber}}</p>
+					<p>Additional Info: {{this.additional_info}}</p>
+					<p>Status: {{this.status}}</p>
+					<form action="/{{this.id}}?_method=DELETE" method="POST">
+          				<button type="submit">Delete</button>
+					</form>
+					</div>	
+				</li>
+			</containter>
+			{{/each}}
+		</ul>
+	</div>
+</div>
+	<div class="panel panel-default" style="background-color: blanchedalmond; padding-left: 100px;"></div>
+		<h3>Update Truckload</h2>
+		<p>Enter the Id of the load, then input the current status.</p>
+		<br>
+
+		<div class="col-lg-4">
+			<form action="/?_method=PUT" method="POST">
+			<input type="text" name="id" placeholder="id">
+ 			<input type="text" name="status" placeholder="Status?">
+			<button class="submit">Update</button>
+		</form>
+	
+	</div>
+</div>
+</div>
+<br>
+
+<div class="col-lg-4">
+	<div class="panel panel-default" style="background-color: blanchedalmond; padding-left: 30px; margin-left: 30px;">
+		<div>
+		<containter>
+			<h2>Enter Lane</h2>
+			<form action="/" method="POST" style="margin-bottom: 50px;">
+				<input class="put"type="text" name="truckloads" placeholder="LANE (City, ST)">
+				<br>
+				<input class="put" type="text" name="pickupdate" placeholder="PICKUP DATE (MM/DD/YYY)">
+				<br>
+				<input class="put" type="text" name="pickupnumber" placeholder="PICKUP NUMBER"></textarea>
+				<br>
+				<input class="put" type="text" name="ponumber" placeholder="PO NUMBER">
+				<br>
+				<textarea class="put" type="text" name="additional_info" placeholder="ADDITIONAL INFO"></textarea>
+				
+				<button id="sub"class="submit" style="margin-left: 300px;" type="submit">Submit</button>
+			</form>
+			</containter>
+		</div>
+	</div>
+</div>
+
+
+
+{{!-- IGNORE THIS SHIT FOR THE MOMENT --}}
+{{!-- ==================================================================== --}}
