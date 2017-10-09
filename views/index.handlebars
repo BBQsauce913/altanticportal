@@ -24,7 +24,7 @@
 	<div class="loadBox">
 		<ul>
 			{{#each truckloads}} 
-				<li>
+				<li id="truckloads">
 					<div class="load" style="margin-bottom: 10px;">
 					<p>ID: {{this.id}}</p>
 					<p>Lane: {{this.lane}}</p>
@@ -66,15 +66,20 @@
 		<containter>
 			<h2>Enter Lane</h2>
 			<form action="/" method="POST" style="margin-bottom: 50px;">
-				<input class="put"type="text" name="truckloads" placeholder="LANE (City, ST)">
+			<label for="name">Lane:</label><br>
+				<input class="put" id="lane" type="text" name="truckloads" placeholder="(City, ST)">
 				<br>
-				<input class="put" type="text" name="pickupdate" placeholder="PICKUP DATE (MM/DD/YYY)">
+			<label for="name">PickUp Date:</label><br>
+				<input class="put" id="pickupdate" type="text" name="pickupdate" placeholder="(MM/DD/YYY)">
 				<br>
-				<input class="put" type="text" name="pickupnumber" placeholder="PICKUP NUMBER"></textarea>
+			<label for="name">PickUp Number:</label><br>
+				<input class="put" id="pickupnumber" type="text" name="pickupnumber" placeholder="PICKUP NUMBER"></textarea>
 				<br>
-				<input class="put" type="text" name="ponumber" placeholder="PO NUMBER">
+			<label for="name">Post Office Box Number:</label><br>	
+				<input class="put" id="ponumber" type="text" name="ponumber" placeholder="PO NUMBER">
 				<br>
-				<textarea class="put" type="text" name="additional_info" placeholder="ADDITIONAL INFO"></textarea>
+			<label for="name">Additional Info:</label><br>	
+				<textarea class="put" id="addinfo" type="text" name="addinfo" placeholder="ADDITIONAL INFO"></textarea>
 				
 				<button id="sub"class="submit" style="margin-left: 300px;" type="submit">Submit</button>
 			</form>
@@ -82,8 +87,4 @@
 		</div>
 	</div>
 </div>
-
-
-
-{{!-- IGNORE THIS SHIT FOR THE MOMENT --}}
-{{!-- ==================================================================== --}}
+x

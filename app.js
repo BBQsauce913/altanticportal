@@ -8,7 +8,7 @@ $(document).ready(function(){
 			var lane = req.body.truckloads;
 			var pickUpDate = req.body.pickupdate;
 			var pickUpNumber = req.body.pickupnumber;
-			var addInfo = req.body.additional_info;
+			var addInfo = req.body.addInfo;
 
 			info.push(lane);
 			info.push(pickUpDate);
@@ -41,3 +41,23 @@ $(document).ready(function(){
 		});
 	});
 });
+
+
+    // Question: What does this code do?
+    $("#sub").on("click", function(event) {
+      event.preventDefault();
+      var newTruckload = {
+       	truckloads: $("#lane").val().trim(),
+        pickupdate: $("#pickupdate").val().trim(),
+        pickupnumber: $("#pickupnumber").val().trim(),
+        ponumber: $("#ponumber").val().trim()
+		addInfo: $("#addinfo").val().trim()
+      };
+
+      // Question: What does this code do??
+      $.post("/api/new", newTruckload)
+      .done(function(data) {
+        console.log(data);
+        alert("Adding truckload...");
+      });
+    });

@@ -24,9 +24,9 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host: "localhost",
-  port: 8889,
+  port: 3306,
   user: "root",
-  password: "root",
+  password: "100193041994",
   database: "atlantic_db"
 });
 
@@ -53,32 +53,33 @@ app.get("/", function(req, res){
 
 var k = 0
 
+
 app.post("/", function(req, res) {
     connection.query("INSERT INTO truckloads (lane, pickupdate, pickupnumber, ponumber, additional_info) VALUES (?, ?, ?, ?, ?)", 
-    [req.body.truckloads, req.body.pickupdate, req.body.pickupnumber, req.body.ponumber, req.body.additional_info], function(err, result) {
-      if (err) {
-        throw err;
-      }
+    [req.body.truckloads, req.body.pickupdate, req.body.pickupnumber, req.body.ponumber, req.body.additional_info], CallbackQuery );
       res.redirect("/");
     });
-  });
+
 
   app.delete("/:id", function(req, res) {
-    connection.query("DELETE FROM truckloads WHERE id = ?", [req.params.id], function(err, result) {
-      if (err) {
-        throw err;
-      }
+    connection.query("DELETE FROM truckloads WHERE id = ?", [req.params.id], CallbackQuery );
       res.redirect("/");
     });
-  });
+  
 
   app.put("/", function(req, res) {
-      connection.query("UPDATE truckloads SET status = ? WHERE id = ?", [req.body.status, req.body.id], function(err, result) {
-        if (err) {
-          throw err;
-        }
+      connection.query("UPDATE truckloads SET status = ? WHERE id = ?", [req.body.status, req.body.id], CallbackQuery );
         res.redirect("/");
       });
-    });
     
+    // created functions for CallBack Query to help identify parts of the code
+    function CallbackQuery(err, result) {
+      if (err) {
+        throw err;
+      
+       }
+    }
+
+
     app.listen(port);
+    console.log("listening on localhost:" + port)
